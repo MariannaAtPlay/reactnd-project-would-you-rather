@@ -5,7 +5,7 @@ import { receiveUsers } from './users';
 import { receiveQuestions } from './questions';
 import { setAuthedUser } from './autherUser';
 
-const AUTHED_ID = 'sarahedo';
+const AUTHED_ID = 'tylermcginnis';
 
 export function handleInitialData () {
     return (dispatch) => {

@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import 'typeface-roboto';
-
 import './index.css';
 import App from './App';
 import rootReducer from './reducers';
