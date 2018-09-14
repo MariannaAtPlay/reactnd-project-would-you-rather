@@ -7,6 +7,7 @@ import Home from './components/Home';
 import NewQuestion from './components/NewQuestion';
 import './App.css';
 import UnansweredQuestion from './components/UnansweredQuestion';
+import AnsweredQuestion from './components/AnsweredQuestion';
 
 class App extends Component {
 	componentDidMount () {
@@ -24,7 +25,8 @@ class App extends Component {
 						? <CircularProgress />
 						// : <Home />
 						//: <NewQuestion />
-						: <UnansweredQuestion id='6ni6ok3ym7mf1p33lnez'/>
+						//: <UnansweredQuestion id='6ni6ok3ym7mf1p33lnez'/>
+						: <AnsweredQuestion id='vthrdm985a262al8qx3do'/>
 					}
 				</div>
 		  	</Fragment>

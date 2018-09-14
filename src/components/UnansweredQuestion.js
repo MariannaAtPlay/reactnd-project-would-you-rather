@@ -13,13 +13,12 @@ class UnansweredQuestion extends Component {
     }
 
     handleSubmit = (id, e) => {
-        e.preventDefault();
-
       	const answer = this.form.answer.value;
       	const { dispatch } = this.props;
       
+        e.preventDefault();
+        
         if (answer !== '') {
-        	console.log('handleSubmit', answer);
           //TODO: Redirect to answerred question
           dispatch(handleAddAnswer(id, answer));
         } else {
@@ -29,7 +28,7 @@ class UnansweredQuestion extends Component {
 
     render () {
         const { question, author } = this.props;
-        console.log('UnansweredQuestion', this.props);
+
         if (question === null) {
             return <p>This question doesn't exist</p>;
         }
