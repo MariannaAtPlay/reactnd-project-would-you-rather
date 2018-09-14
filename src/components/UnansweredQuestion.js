@@ -10,7 +10,8 @@ import { formatDate } from '../utils/helpers';
 class UnansweredQuestion extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.value)
+      	const { answer } = this.form;
+        console.log(answer.value)
     }
 
     render () {
@@ -25,7 +26,7 @@ class UnansweredQuestion extends Component {
 
         return (
             <Card>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} ref={form => this.form = form}>
                     <CardContent>
                         <Avatar
                             alt={name}
@@ -33,8 +34,8 @@ class UnansweredQuestion extends Component {
                         />
                         {name} asks:
                         <p>Would you rather...</p><br />
-                        <input type="radio" name="answer" value='optionOne' /> {optionOne.text}<br />
-                        <input type="radio" name="answer" value='optionTwo' /> {optionTwo.text}<br />
+                        <input type="radio" value='optionOne' name="answer" /> {optionOne.text}<br />
+                        <input type="radio" value='optionTwo' name="answer" /> {optionTwo.text}<br />
                         <p>Asked at {formatDate(timestamp)}</p>
                     </CardContent>
                     <CardActions>
