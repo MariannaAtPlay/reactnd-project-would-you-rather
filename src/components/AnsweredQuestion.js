@@ -36,7 +36,7 @@ class AnsweredQuestion extends Component {
                             </li>
                             <p>
                             chosen by {optionOne.votes.length} out of {totalVotes} users <br />
-                            which is {optionOne.votes.length / totalVotes * 100}% <br /> 
+                            which is {Math.round(optionOne.votes.length / totalVotes * 100)}% <br /> 
                             </p>
                             <li>
                                 {optionTwo.text} 
@@ -46,7 +46,7 @@ class AnsweredQuestion extends Component {
                             </li>
                             <p>
                             chosen by {optionTwo.votes.length} out of {totalVotes} users <br />
-                            which is {optionTwo.votes.length / totalVotes * 100}%
+                            which is {Math.round(optionTwo.votes.length / totalVotes * 100)}%
                             </p>
                         </ul>
                         <p>Asked at {formatDate(timestamp)}</p>
