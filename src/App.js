@@ -9,6 +9,7 @@ import './App.css';
 import UnansweredQuestion from './components/UnansweredQuestion';
 import AnsweredQuestion from './components/AnsweredQuestion';
 import QuestionPage from './components/QuestionPage';
+import LeaderBoard from './components/LeaderBoard';
 
 class App extends Component {
 	componentDidMount () {
@@ -18,7 +19,7 @@ class App extends Component {
 	render() {
 		//const { classes } = this.props;
 		const { loadingBar } = this.props;
-		console.log('App.js', this.props.loadingBar)
+
 		return (
 			<Fragment>
 				<CssBaseline />
@@ -29,7 +30,8 @@ class App extends Component {
 						//: <NewQuestion />
 						//: <UnansweredQuestion id='6ni6ok3ym7mf1p33lnez'/>
 						//: <AnsweredQuestion id='vthrdm985a262al8qx3do'/>
-						: <QuestionPage id='vthrdm985a262al8qx3do' />
+						//: <QuestionPage id='6ni6ok3ym7mf1p33lnez' />
+						: <LeaderBoard />
 					}
 				</div>
 		  	</Fragment>

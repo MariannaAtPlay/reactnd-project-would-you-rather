@@ -4,7 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-
 import { formatDate } from '../utils/helpers';
 
 class BriefQuestion extends Component {
