@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 import UserStats from './UserStats';
 
 class LeaderBoard extends Component {
@@ -7,12 +8,12 @@ class LeaderBoard extends Component {
         console.log('LeaderBoard', this.props);
         return (
             <div>
-                <h3>LeaderBoard</h3>
-                <ul>
-                    {this.props.userIDs.map((id) => (
-                        <UserStats key={id} id={id} />
-                    ))}
-                </ul>
+                <Typography variant='headline' component='h2' align='center'>
+                    LeaderBoard
+                </Typography>
+                {this.props.userIDs.map((id) => (
+                    <UserStats key={id} id={id} />
+                ))}
             </div>
         );
     }

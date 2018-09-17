@@ -38,7 +38,7 @@ class UnansweredQuestion extends Component {
 		const { errorMsg } = this.state;
 
         return (
-            <Card>
+            <Card style={{width: '30vw'}}>
                 <form onSubmit={(e) => this.handleSubmit(id, e)} ref={(f) => this.form = f}>
                     <CardContent>
                         <Avatar

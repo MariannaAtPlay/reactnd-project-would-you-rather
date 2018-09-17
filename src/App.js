@@ -10,6 +10,7 @@ import UnansweredQuestion from './components/UnansweredQuestion';
 import AnsweredQuestion from './components/AnsweredQuestion';
 import QuestionPage from './components/QuestionPage';
 import LeaderBoard from './components/LeaderBoard';
+import Login from './components/Login';
 
 class App extends Component {
 	componentDidMount () {
@@ -31,7 +32,8 @@ class App extends Component {
 						//: <UnansweredQuestion id='6ni6ok3ym7mf1p33lnez'/>
 						//: <AnsweredQuestion id='vthrdm985a262al8qx3do'/>
 						//: <QuestionPage id='6ni6ok3ym7mf1p33lnez' />
-						: <LeaderBoard />
+						//: <LeaderBoard />
+						: <Login />
 					}
 				</div>
 		  	</Fragment>

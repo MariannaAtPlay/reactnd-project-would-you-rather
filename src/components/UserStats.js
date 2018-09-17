@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import { withTheme } from '@material-ui/core/styles';
 
 class UserStats extends Component {
 
@@ -12,16 +15,24 @@ class UserStats extends Component {
         console.log('UserStats', this.props);
 
         return (
-            <Card>
+            //TODO: move the styles to the theme
+            <Card style={{
+                width: '50%',   
+                margin: '1em auto',
+                padding: '1em',
+                display: 'block',
+            }}>
                 <CardContent>
                     <Avatar
                         alt={name}
                         src={avatarURL}
                     />
-                    {name} 
-                    <p>Answered Question: {Object.keys(answers).length}</p>
-                    <p>Created Questions: {questions.length}</p>
-                    Score: {Object.keys(answers).length + questions.length}
+                    <Typography component="p">
+                        {name} <br />
+                        Answered Questions: {Object.keys(answers).length} <br />
+                        Created Questions: {questions.length} <br />
+                        Score: {Object.keys(answers).length + questions.length}
+                    </Typography>
                 </CardContent>
             </Card>
         );
@@ -34,5 +45,5 @@ function mapStateToProps ({ users }, { id }) {
         user: users[id]
     }
 }
-
-export default connect(mapStateToProps)(UserStats);
+//export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));
+export default connect(mapStateToProps)(withTheme()(UserStats));
