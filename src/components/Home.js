@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 import BriefQuestion from './BriefQuestion';
 
 class Home extends Component {
     
     render () {
+        const { answeredQuestionIds, unansweredQuestionIds } = this.props;
 
         return (
             <div>
-                <h3>Answered Questions</h3>
-                <ul>
-                    {this.props.answeredQuestionIds.map((id) => (
-                        <BriefQuestion key={id} id={id} />
-                    ))}
-                </ul>
-                <h3>Unanswered Questions</h3>
-                <ul>
-                    {this.props.unansweredQuestionIds.map((id) => (
-                        <BriefQuestion key={id} id={id} />
-                    ))}
-                </ul>
+                <Typography variant='headline' component='h3' align='center'>
+                    Answered Questions
+                </Typography>
+                {
+                    answeredQuestionIds.length
+                        ? answeredQuestionIds.map((id) => (
+                            <BriefQuestion key={id} id={id} />
+                        ))
+                        : <Typography component='p' align='center'>
+                            No Answered Questions yet! What are you waiting for???
+                        </Typography>
+                }
+
+                <Typography variant='headline' component='h3' align='center'>
+                    Unanswered Questions
+                </Typography>
+                {
+                    unansweredQuestionIds.length
+                        ? unansweredQuestionIds.map((id) => (
+                            <BriefQuestion key={id} id={id} />
+                        ))
+                        : <Typography component='p' align='center'>
+                            No more Unswered Questions! Time to create some new ones! 
+                          </Typography>
+                }
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -7,10 +8,6 @@ import CardContent from '@material-ui/core/CardContent';
 import { formatDate } from '../utils/helpers';
 
 class BriefQuestion extends Component {
-    toQuestionPage = (e, id) => {
-        e.preventDefault();
-        //TODO: redirect to QuestionPage
-    }
 
     render () {
         const { question, author } = this.props;
@@ -30,7 +27,9 @@ class BriefQuestion extends Component {
                     <p>{formatDate(timestamp)}</p>
                 </CardContent>
                 <CardActions>
-                    <button onClick={(e) => this.toQuestionPage(e, id)}>View Question</button>
+                <Link to={`/questions/${id}`} >
+                    <button>View Question</button>
+                </Link>
                 </CardActions>
             </Card>
         );

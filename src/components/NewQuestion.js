@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import { formatQuestion, formatDate } from '../utils/helpers';
 import { handleAddQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {

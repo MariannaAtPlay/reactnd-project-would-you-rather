@@ -6,9 +6,9 @@ import AnsweredQuestion from './AnsweredQuestion';
 class QuestionPage extends Component {
 
     render () {
-        const { answered, id } = this.props;
-
-        console.log('QuestionPage', this.props);
+        const { autherUserAnsweres, match } = this.props;
+        const id = match.params.id;
+        const answered = autherUserAnsweres.hasOwnProperty(id) ? true : false;
 
         if ( answered ) {
             return <AnsweredQuestion id={id} />;
@@ -19,12 +19,11 @@ class QuestionPage extends Component {
     }
 }
 
-function mapStateToProps ({ authedUser, users }, { id }) {
-    console.log('QuestionPage', authedUser)
-    const answered = users[authedUser].answers.hasOwnProperty(id) ? true : false;
+function mapStateToProps ({ authedUser, users }) {
+    const autherUserAnsweres = users[authedUser].answers;
 
     return {
-        answered
+        autherUserAnsweres
     };
 }
 
