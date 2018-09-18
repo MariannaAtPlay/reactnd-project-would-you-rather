@@ -14,8 +14,6 @@ class BriefQuestion extends Component {
 
     render () {
         const { question, author } = this.props;
-        console.log('BriefQuestion', this.props);
-
         const { optionOne, timestamp, id } = question;
         const { name, avatarURL } = author;
 

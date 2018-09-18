@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,7 +10,8 @@ import { handleAddQuestion } from '../actions/questions';
 class NewQuestion extends Component {
     state = {
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        toHome: false
     }
 
     handleInputChange = (e) => {
@@ -30,20 +32,23 @@ class NewQuestion extends Component {
 
         this.setState({
             optionOne: '',
-            optionTwo: ''
-        })
+            optionTwo: '',
+            toHome: true
+        });
     }
 
     render () {
-        const { optionOne, optionTwo } = this.state;
+        console.log(this.state)
+        const { optionOne, optionTwo, toHome } = this.state;
 
-        {/* redirect to / if submitted */}
+        if (toHome === true) return <Redirect to='/' />
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <Card>
                     <CardContent>
-                        Create New Question
-                        Would you rather...
+                        Create New Question <br />
+                        Would you rather...<br />
                         <input
                             name='optionOne'
                             type='text'

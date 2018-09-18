@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import BriefQuestion from './BriefQuestion';
 
 class Home extends Component {
+    
     render () {
-        console.log('Home', this.props);
+
         return (
             <div>
                 <h3>Answered Questions</h3>
