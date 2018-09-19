@@ -27,13 +27,13 @@ class NewQuestion extends Component {
         const { dispatch } = this.props;
 
         e.preventDefault();
-        dispatch(handleAddQuestion(optionOne, optionTwo));
 
-        this.setState({
+		this.setState({
             optionOne: '',
             optionTwo: '',
             toHome: true
-        });
+        },
+       () => dispatch(handleAddQuestion(optionOne, optionTwo)));
     }
 
     render () {

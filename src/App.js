@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { withStyles } from '@material-ui/core/styles';
+import { withTheme } from '@material-ui/core/styles';
 import { handleInitialData } from './actions/shared';
 import Home from './components/Home';
 import NewQuestion from './components/NewQuestion';
@@ -14,20 +16,33 @@ import LeaderBoard from './components/LeaderBoard';
 import Login from './components/Login';
 import Nav from './components/Nav';
 
+
+const styles = theme => ({
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+      width: 1100,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+});  
 class App extends Component {
 	componentDidMount () {
 		this.props.dispatch(handleInitialData());
 	}
 
 	render() {
-		//const { classes } = this.props;
+		const { classes } = this.props;
 		const { loadingBar, authedUser } = this.props;
 
 		return (
 			<Router>
 				<Fragment>
 					<CssBaseline />
-					<div>
+					<div className={classes.layout}>
 						{!authedUser 
 							? <Login />
 							: (
@@ -67,4 +82,5 @@ function mapStateToProps ({ loadingBar, authedUser }) {
 	}
 }
 
-export default connect(mapStateToProps)(App);
+//export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));
+export default connect(mapStateToProps)(withStyles(styles)(App));
