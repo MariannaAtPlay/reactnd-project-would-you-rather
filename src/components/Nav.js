@@ -5,19 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import { reSetAuthedUser } from '../actions/authedUser'; 
 
 
 const styles = theme => ({
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
   toolbarMain: {
     borderBottom: `1px solid ${theme.palette.grey[300]}`,
   },
@@ -36,8 +27,12 @@ const styles = theme => ({
 });
 
 function Nav (props) {
-  console.log('Nav ', props.user)
-  const { classes, user } = props;
+  const { classes, user, dispatch } = props;
+  
+  const handleLogout = () => {
+    dispatch(reSetAuthedUser());
+  }
+  
   return (
     <Fragment>
     <Toolbar className={classes.toolbarMain}>
@@ -54,7 +49,7 @@ function Nav (props) {
 		{user.name}
 		</Typography>
 			
-          <Button variant="outlined" size="small">
+          <Button variant="outlined" size="small" onClick={handleLogout}>
             Logout
           </Button>
         </Toolbar>
