@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -15,6 +15,7 @@ import QuestionPage from './components/QuestionPage';
 import LeaderBoard from './components/LeaderBoard';
 import Login from './components/Login';
 import Nav from './components/Nav';
+import PageNotFound from './components/PageNotFound';
 
 
 const styles = theme => ({
@@ -51,18 +52,14 @@ class App extends Component {
 									? <CircularProgress />
 									:	<div>
 											<Nav />
+                         					<Switch>
 											<Route path='/' exact component={Home} />
 											<Route path='/questions/:id' component={QuestionPage} />
 											<Route path='/add' component={NewQuestion} />
 											<Route path='/leaderboard' component={LeaderBoard} />
-
+											<Route component={PageNotFound} />
+											</Switch>
 										</div>
-									//: <Home />
-									//: <NewQuestion />
-									//: <UnansweredQuestion id='6ni6ok3ym7mf1p33lnez'/>
-									//: <AnsweredQuestion id='vthrdm985a262al8qx3do'/>
-									//: <QuestionPage id='6ni6ok3ym7mf1p33lnez' />
-									//: <LeaderBoard />
 									}	
 								</div>
 							)

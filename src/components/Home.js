@@ -10,7 +10,7 @@ class Home extends Component {
 
         return (
             <div>
-                <Typography variant='headline' component='h3' align='center'>
+                <Typography variant='headline' align='center'>
                     Answered Questions
                 </Typography>
                 {
@@ -23,7 +23,7 @@ class Home extends Component {
                         </Typography>
                 }
 
-                <Typography variant='headline' component='h3' align='center'>
+                <Typography variant='headline' align='center'>
                     Unanswered Questions
                 </Typography>
                 {
