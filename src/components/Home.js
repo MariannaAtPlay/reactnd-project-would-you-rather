@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import BriefQuestion from './BriefQuestion';
+import BriefQuestionsList from './BriefQuestionsList';
 
 class Home extends Component {
     
@@ -10,31 +10,17 @@ class Home extends Component {
 
         return (
             <div>
-                <Typography variant='headline' align='center'>
-                    Answered Questions
-                </Typography>
-                {
-                    answeredQuestionIds.length
-                        ? answeredQuestionIds.map((id) => (
-                            <BriefQuestion key={id} id={id} />
-                        ))
-                        : <Typography component='p' align='center'>
-                            No Answered Questions yet! What are you waiting for???
-                        </Typography>
-                }
+				<BriefQuestionsList 
+          			title='Answered Questions'
+          			idsList={answeredQuestionIds}
+          			emptyListNote='No Answered Questions yet! What are you waiting for???'
+				/>
 
-                <Typography variant='headline' align='center'>
-                    Unanswered Questions
-                </Typography>
-                {
-                    unansweredQuestionIds.length
-                        ? unansweredQuestionIds.map((id) => (
-                            <BriefQuestion key={id} id={id} />
-                        ))
-                        : <Typography component='p' align='center'>
-                            No more Unswered Questions! Time to create some new ones! 
-                          </Typography>
-                }
+				<BriefQuestionsList 
+          			title='Unanswered Questions'
+          			idsList={unansweredQuestionIds}
+          			emptyListNote='No more Unswered Questions! Time to create some new ones! '
+				/>
             </div>
         );
     }
