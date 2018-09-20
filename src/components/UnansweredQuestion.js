@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { handleAddAnswer } from '../actions/questions';
 import { formatDate } from '../utils/helpers';
+import PageNotFound from './PageNotFound';
 
 class UnansweredQuestion extends Component {
   	state = {
@@ -30,7 +31,7 @@ class UnansweredQuestion extends Component {
         const { question, author } = this.props;
 
         if (question === null) {
-            return <p>This question doesn't exist</p>;
+            return <PageNotFound />;
         }
 
         const { optionOne, optionTwo, timestamp, id } = question;

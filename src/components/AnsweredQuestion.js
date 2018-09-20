@@ -4,6 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { formatDate } from '../utils/helpers';
+import PageNotFound from './PageNotFound';
 
 class AnsweredQuestion extends Component {
 
@@ -11,7 +12,7 @@ class AnsweredQuestion extends Component {
         const { question, author, authedUser } = this.props;
 
         if (question === null) {
-            return <p>This question doesn't exist</p>;
+            return <PageNotFound />;
         }
 
         const { optionOne, optionTwo, timestamp, id } = question;
