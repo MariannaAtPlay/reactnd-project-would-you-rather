@@ -5,6 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import { formatDate } from '../utils/helpers';
 
 class BriefQuestion extends Component {
@@ -15,16 +16,23 @@ class BriefQuestion extends Component {
         const { name, avatarURL } = author;
 
         return (
-            <Card>
+            <Card style={{
+                width: '50%',   
+                margin: '1em auto',
+                padding: '1em',
+                display: 'block',
+            }}>
                 <CardContent>
                     <Avatar
                         alt={name}
                         src={avatarURL}
                     />
+					<Typography component="p">
                     {name} asks:
-                    <p>Would you rather...</p>
-                    <p>{optionOne.text.slice(0, 30)}...</p>
-                    <p>{formatDate(timestamp)}</p>
+                    Would you rather...<br />
+                    {optionOne.text.slice(0, 30)}...<br />
+                    {formatDate(timestamp)} <br />
+                    </Typography>
                 </CardContent>
                 <CardActions>
                 <Link to={`/questions/${id}`} >

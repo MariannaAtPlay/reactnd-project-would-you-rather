@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import { handleAddQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {
@@ -37,16 +38,22 @@ class NewQuestion extends Component {
     }
 
     render () {
-        console.log(this.state)
         const { optionOne, optionTwo, toHome } = this.state;
 
         if (toHome === true) return <Redirect to='/' />
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <Card>
+				<Typography variant='headline' component='h2' align='center'>
+                        Create New Question 
+				</Typography>
+                <Card style={{
+                width: '50%',   
+                margin: '1em auto',
+                padding: '1em',
+                display: 'block',
+            }}>
                     <CardContent>
-                        Create New Question <br />
                         Would you rather...<br />
                         <input
                             name='optionOne'

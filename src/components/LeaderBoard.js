@@ -5,7 +5,7 @@ import UserStats from './UserStats';
 
 class LeaderBoard extends Component {
     render () {
-        console.log('LeaderBoard', this.props);
+
         return (
             <div>
                 <Typography variant='headline' component='h2' align='center'>

@@ -1,22 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
-import { withTheme } from '@material-ui/core/styles';
-import { handleInitialData } from './actions/shared';
-import Home from './components/Home';
-import NewQuestion from './components/NewQuestion';
-import './App.css';
-import UnansweredQuestion from './components/UnansweredQuestion';
-import AnsweredQuestion from './components/AnsweredQuestion';
-import QuestionPage from './components/QuestionPage';
-import LeaderBoard from './components/LeaderBoard';
+//import { withTheme } from '@material-ui/core/styles';
 import Login from './components/Login';
-import Nav from './components/Nav';
-import PageNotFound from './components/PageNotFound';
-
+import PrivateApp from './components/PrivateApp';
+import { handleInitialData } from './actions/shared';
 
 const styles = theme => ({
   layout: {
@@ -30,54 +21,45 @@ const styles = theme => ({
     },
   },
 });  
+
 class App extends Component {
-	componentDidMount () {
+  	componentDidMount () {
 		this.props.dispatch(handleInitialData());
 	}
 
 	render() {
-		const { classes } = this.props;
-		const { loadingBar, authedUser } = this.props;
+		const { classes, authedUser, loadingBar } = this.props;
 
 		return (
 			<Router>
 				<Fragment>
 					<CssBaseline />
-					<div className={classes.layout}>
+          			{loadingBar.default === undefined || loadingBar.default === 1
+						? (
+                     		<div style={{display: 'flex', justifyContent: 'center'}}>
+								<CircularProgress />
+							</div>
+						)
+                     	: (					
+                     <div className={classes.layout}>
 						{!authedUser 
 							? <Login />
-							: (
-								<div>
-									{loadingBar.default === undefined || loadingBar.default === 1
-									? <CircularProgress />
-									:	<div>
-											<Nav />
-                         					<Switch>
-											<Route path='/' exact component={Home} />
-											<Route path='/questions/:id' component={QuestionPage} />
-											<Route path='/add' component={NewQuestion} />
-											<Route path='/leaderboard' component={LeaderBoard} />
-											<Route component={PageNotFound} />
-											</Switch>
-										</div>
-									}	
-								</div>
-							)
+							: <PrivateApp />
 						}
-
 					</div>
+        )
+                    }
 				</Fragment>
 			</Router>
 		);
 	}
 }
 
-function mapStateToProps ({ loadingBar, authedUser }) {
+function mapStateToProps ({ authedUser, loadingBar }) {
 	return {
-		loadingBar,
-		authedUser
+		authedUser,
+      loadingBar
 	}
 }
 
-//export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));
 export default connect(mapStateToProps)(withStyles(styles)(App));

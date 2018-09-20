@@ -4,7 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+//import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/core/styles';
 
 class UserStats extends Component {
@@ -12,7 +12,6 @@ class UserStats extends Component {
     render () {
         const { user } = this.props;
         const { name, avatarURL, answers, questions } = user;
-        console.log('UserStats', this.props);
 
         return (
             //TODO: move the styles to the theme

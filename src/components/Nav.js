@@ -7,22 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { reSetAuthedUser } from '../actions/authedUser'; 
 
-
 const styles = theme => ({
   toolbarMain: {
     borderBottom: `1px solid ${theme.palette.grey[300]}`,
   },
   toolbarTitle: {
     flex: 1,
-  },
-  card: {
-    display: 'flex',
-  },
-  cardDetails: {
-    flex: 1,
-  },
-  cardMedia: {
-    width: 160,
   },
 });
 
@@ -58,10 +48,10 @@ function Nav (props) {
         <Typography variant='subheading'>
  		<NavLink to='/' exact activeClassName='active'>
             Home
-        </NavLink>
+        </NavLink>&nbsp;&nbsp;
         <NavLink to='/add' activeClassName='active'>
             New Question
-        </NavLink>
+        </NavLink>&nbsp;&nbsp;
         <NavLink to='/leaderboard' activeClassName='active'>
           Leaderboard
         </NavLink>

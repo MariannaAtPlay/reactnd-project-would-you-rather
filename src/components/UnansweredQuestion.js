@@ -4,6 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import { handleAddAnswer } from '../actions/questions';
 import { formatDate } from '../utils/helpers';
 import PageNotFound from './PageNotFound';
@@ -20,7 +21,6 @@ class UnansweredQuestion extends Component {
         e.preventDefault();
         
         if (answer !== '') {
-          //TODO: Redirect to answerred question
           dispatch(handleAddAnswer(id, answer));
         } else {
           this.setState({errorMsg: 'You must make a choice'});
@@ -39,19 +39,26 @@ class UnansweredQuestion extends Component {
 		const { errorMsg } = this.state;
 
         return (
-            <Card style={{width: '30vw'}}>
+            <Card style={{
+                width: '50%',   
+                margin: '1em auto',
+                padding: '1em',
+                display: 'block',
+            }}>
                 <form onSubmit={(e) => this.handleSubmit(id, e)} ref={(f) => this.form = f}>
                     <CardContent>
                         <Avatar
                             alt={name}
                             src={avatarURL}
                         />
+						<Typography component='div'>
                         {name} asks:
                         <p>Would you rather...</p><br />
 						{errorMsg ? <p><span style={{color:'red'}}>{errorMsg}</span><br /></p> : null}
                         <input type="radio" value='optionOne' name="answer" /> {optionOne.text}<br />
                         <input type="radio" value='optionTwo' name="answer" /> {optionTwo.text}<br />
                         <p>Asked at {formatDate(timestamp)}</p>
+                        </Typography>
                     </CardContent>
                     <CardActions>
                         <button type='submit'>Vote</button>

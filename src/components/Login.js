@@ -58,7 +58,6 @@ class Login extends Component {
         e.preventDefault();
         
         if (userID !== '') {
-            //TODO: Redirect to answerred question
             dispatch(setAuthedUser(userID));
         } else {
             this.setState({errorMsg: 'You must make a choice'});
@@ -112,11 +111,4 @@ function mapStateToProps ({ users }) {
     }
 }
 
-// const options = [
-//     { value: 'chocolate', label: 'Chocolate' },
-//     { value: 'strawberry', label: 'Strawberry' },
-//     { value: 'vanilla', label: 'Vanilla' }
-//   ];
-
-//export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));
 export default connect(mapStateToProps)(withStyles(styles)(Login));
