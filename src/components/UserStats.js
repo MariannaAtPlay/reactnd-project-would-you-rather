@@ -44,5 +44,5 @@ function mapStateToProps ({ users }, { id }) {
         user: users[id]
     }
 }
-//export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));
+
 export default connect(mapStateToProps)(withTheme()(UserStats));

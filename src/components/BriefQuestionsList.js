@@ -7,14 +7,13 @@ function BriefQuestionsList (props) {
   
 	return (	
       		<div>
-                {
-                    idsList.length
-                        ? idsList.map((id) => (
-                            <BriefQuestion key={id} id={id} />
-                        ))
-                        : <Typography component='p' align='center'>
-							{emptyListNote}
-                          </Typography>
+                {idsList.length
+                    ? idsList.map((id) => (
+                        <BriefQuestion key={id} id={id} />
+                    ))
+                    : <Typography component='p' align='center'>
+                        {emptyListNote}
+                        </Typography>
                 }
 			</div>
 	);

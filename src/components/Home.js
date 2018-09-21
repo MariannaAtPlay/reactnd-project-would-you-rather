@@ -25,22 +25,22 @@ class Home extends Component {
         const { answeredQuestionIds, unansweredQuestionIds, classes } = this.props;
     	const { value } = this.state;
 
-return (
-      <div className={classes.root}>
-          <Tabs value={value} onChange={this.handleChange}>
-            <Tab label="Unanswered Questions" />
-            <Tab label="Answered Questions" />
-          </Tabs>
-        {value === 0 && <BriefQuestionsList 
-        	idsList={unansweredQuestionIds}
-        	emptyListNote='No more Unswered Questions! Time to create some new ones! '
-		/>}
-        {value === 1 && <BriefQuestionsList 
-        	idsList={answeredQuestionIds}
-        	emptyListNote='No Answered Questions yet! What are you waiting for???'
-		/>}
-      </div>
-    );
+        return (
+            <div className={classes.root}>
+                <Tabs value={value} onChange={this.handleChange}>
+                    <Tab label="Unanswered Questions" />
+                    <Tab label="Answered Questions" />
+                </Tabs>
+                {value === 0 && <BriefQuestionsList 
+                    idsList={unansweredQuestionIds}
+                    emptyListNote='No more Unswered Questions! Time to create some new ones! '
+                />}
+                {value === 1 && <BriefQuestionsList 
+                    idsList={answeredQuestionIds}
+                    emptyListNote='No Answered Questions yet! What are you waiting for???'
+                />}
+            </div>
+        );
 	}
 }
 
@@ -59,5 +59,4 @@ function mapStateToProps ({ authedUser, questions, users }) {
     }
 }
 
-//export default connect(mapStateToProps)(withStyles(styles)(App));
 export default connect(mapStateToProps)(withStyles(styles)(Home));
