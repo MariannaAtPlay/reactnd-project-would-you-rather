@@ -9,21 +9,21 @@ import Login from './components/Login';
 import PrivateApp from './components/PrivateApp';
 import { handleInitialData } from './actions/shared';
 
-const styles = theme => ({
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
-});  
+const styles = (theme) => ({
+	layout: {
+		width: 'auto',
+		marginLeft: theme.spacing.unit * 3,
+		marginRight: theme.spacing.unit * 3,
+		[theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+			width: 1100,
+			marginLeft: 'auto',
+			marginRight: 'auto'
+		}
+	}
+});
 
 class App extends Component {
-  	componentDidMount () {
+	componentDidMount() {
 		this.props.dispatch(handleInitialData());
 	}
 
@@ -34,32 +34,26 @@ class App extends Component {
 			<Router>
 				<Fragment>
 					<CssBaseline />
-          			{loadingBar.default === undefined || loadingBar.default === 1
-						? (
-                     		<div style={{display: 'flex', justifyContent: 'center'}}>
-								<CircularProgress />
-							</div>
-						)
-                     	: (					
-                     <div className={classes.layout}>
-						{!authedUser 
-							? <Login />
-							: <PrivateApp />
-						}
-					</div>
-        )
-                    }
+					{loadingBar.default === undefined || loadingBar.default === 1 ? (
+						<div style={{ display: 'flex', justifyContent: 'center' }}>
+							<CircularProgress />
+						</div>
+					) : (
+						<div className={classes.layout}>
+							{!authedUser ? <Login /> : <PrivateApp />}
+						</div>
+					)}
 				</Fragment>
 			</Router>
 		);
 	}
 }
 
-function mapStateToProps ({ authedUser, loadingBar }) {
+function mapStateToProps({ authedUser, loadingBar }) {
 	return {
 		authedUser,
-      loadingBar
-	}
+		loadingBar
+	};
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(App));

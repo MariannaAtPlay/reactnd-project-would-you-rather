@@ -9,52 +9,47 @@ import Typography from '@material-ui/core/Typography';
 import { formatDate } from '../utils/helpers';
 
 class BriefQuestion extends Component {
+	render() {
+		const { question, author } = this.props;
+		const { optionOne, timestamp, id } = question;
+		const { name, avatarURL } = author;
 
-    render () {
-        const { question, author } = this.props;
-        const { optionOne, timestamp, id } = question;
-        const { name, avatarURL } = author;
-
-        return (
-            <Card style={{
-                width: '50%',   
-                margin: '1em auto',
-                padding: '1em',
-                display: 'block',
-            }}>
-                <CardContent>
-                    <Avatar
-                        alt={name}
-                        src={avatarURL}
-                    />
+		return (
+			<Card
+				style={{
+					width: '50%',
+					margin: '1em auto',
+					padding: '1em',
+					display: 'block'
+				}}
+			>
+				<CardContent>
+					<Avatar alt={name} src={avatarURL} />
 					<Typography component="p">
-                    {name} asks:
-                    Would you rather...<br />
-                    {optionOne.text.slice(0, 30)}...<br />
-                    {formatDate(timestamp)} <br />
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                <Link to={`/questions/${id}`} >
-                    <button>View Question</button>
-                </Link>
-                </CardActions>
-            </Card>
-        );
-    }
+						{name} asks: Would you rather...
+						<br />
+						{optionOne.text.slice(0, 30)}...
+						<br />
+						{formatDate(timestamp)} <br />
+					</Typography>
+				</CardContent>
+				<CardActions>
+					<Link to={`/questions/${id}`}>
+						<button>View Question</button>
+					</Link>
+				</CardActions>
+			</Card>
+		);
+	}
 }
 
-function mapStateToProps ({ questions, users }, { id }) {
-    const question = questions[id];
+function mapStateToProps({ questions, users }, { id }) {
+	const question = questions[id];
 
-    return {
-        question: question
-            ? question
-            : null,
-        author: question 
-            ? users[question.author] 
-            : null
-    }
+	return {
+		question: question ? question : null,
+		author: question ? users[question.author] : null
+	};
 }
 
 export default connect(mapStateToProps)(BriefQuestion);

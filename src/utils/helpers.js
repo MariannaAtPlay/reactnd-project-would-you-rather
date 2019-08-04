@@ -1,4 +1,4 @@
-export function formatDate (timestamp) {
+export function formatDate(timestamp) {
 	const d = new Date(timestamp);
 	const time = d.toLocaleTimeString('en-US');
 

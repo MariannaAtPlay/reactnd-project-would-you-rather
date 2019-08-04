@@ -8,16 +8,15 @@ import LeaderBoard from './LeaderBoard';
 import PageNotFound from './PageNotFound';
 
 class PrivateApp extends Component {
-  	render() {
-
+	render() {
 		return (
 			<div>
 				<Nav />
 				<Switch>
-					<Route path='/' exact component={Home} />
-					<Route path='/questions/:id' component={QuestionPage} />
-					<Route path='/add' component={NewQuestion} />
-					<Route path='/leaderboard' component={LeaderBoard} />
+					<Route path="/" exact component={Home} />
+					<Route path="/questions/:id" component={QuestionPage} />
+					<Route path="/add" component={NewQuestion} />
+					<Route path="/leaderboard" component={LeaderBoard} />
 					<Route component={PageNotFound} />
 				</Switch>
 			</div>

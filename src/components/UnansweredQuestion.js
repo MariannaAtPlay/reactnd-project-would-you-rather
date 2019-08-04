@@ -10,76 +10,84 @@ import { formatDate } from '../utils/helpers';
 import PageNotFound from './PageNotFound';
 
 class UnansweredQuestion extends Component {
-  	state = {
-      errorMsg: ''
-    }
+	state = {
+		errorMsg: ''
+	};
 
-    handleSubmit = (id, e) => {
-      	const answer = this.form.answer.value;
-      	const { dispatch } = this.props;
-      
-        e.preventDefault();
-        
-        if (answer !== '') {
-          dispatch(handleAddAnswer(id, answer));
-        } else {
-          this.setState({errorMsg: 'You must make a choice'});
-        }
-    }
+	handleSubmit = (id, e) => {
+		const answer = this.form.answer.value;
+		const { dispatch } = this.props;
 
-    render () {
-        const { question, author } = this.props;
+		e.preventDefault();
 
-        if (question === null) {
-            return <PageNotFound />;
-        }
+		if (answer !== '') {
+			dispatch(handleAddAnswer(id, answer));
+		} else {
+			this.setState({ errorMsg: 'You must make a choice' });
+		}
+	};
 
-        const { optionOne, optionTwo, timestamp, id } = question;
-        const { name, avatarURL } = author;
+	render() {
+		const { question, author } = this.props;
+
+		if (question === null) {
+			return <PageNotFound />;
+		}
+
+		const { optionOne, optionTwo, timestamp, id } = question;
+		const { name, avatarURL } = author;
 		const { errorMsg } = this.state;
 
-        return (
-            <Card style={{
-                width: '50%',   
-                margin: '1em auto',
-                padding: '1em',
-                display: 'block',
-            }}>
-                <form onSubmit={(e) => this.handleSubmit(id, e)} ref={(f) => this.form = f}>
-                    <CardContent>
-                        <Avatar
-                            alt={name}
-                            src={avatarURL}
-                        />
-						<Typography component='div'>
-                        {name} asks:
-                        <p>Would you rather...</p><br />
-						{errorMsg ? <p><span style={{color:'red'}}>{errorMsg}</span><br /></p> : null}
-                        <input type="radio" value='optionOne' name="answer" /> {optionOne.text}<br />
-                        <input type="radio" value='optionTwo' name="answer" /> {optionTwo.text}<br />
-                        <p>Asked at {formatDate(timestamp)}</p>
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <button type='submit'>Vote</button>
-                    </CardActions>
-                </form>
-            </Card>
-        );
-    }
+		return (
+			<Card
+				style={{
+					width: '50%',
+					margin: '1em auto',
+					padding: '1em',
+					display: 'block'
+				}}
+			>
+				<form
+					onSubmit={(e) => this.handleSubmit(id, e)}
+					ref={(f) => (this.form = f)}
+				>
+					<CardContent>
+						<Avatar alt={name} src={avatarURL} />
+						<Typography component="div">
+							{name} asks:
+							<p>Would you rather...</p>
+							<br />
+							{errorMsg ? (
+								<p>
+									<span style={{ color: 'red' }}>{errorMsg}</span>
+									<br />
+								</p>
+							) : null}
+							<input type="radio" value="optionOne" name="answer" />{' '}
+							{optionOne.text}
+							<br />
+							<input type="radio" value="optionTwo" name="answer" />{' '}
+							{optionTwo.text}
+							<br />
+							<p>Asked at {formatDate(timestamp)}</p>
+						</Typography>
+					</CardContent>
+					<CardActions>
+						<button type="submit">Vote</button>
+					</CardActions>
+				</form>
+			</Card>
+		);
+	}
 }
 
-function mapStateToProps ({ questions, users }, { id }) {
-    const question = questions[id];
+function mapStateToProps({ questions, users }, { id }) {
+	const question = questions[id];
 
-    return {
-        question: question
-            ? question
-            : null,
-        author: question 
-            ? users[question.author] 
-            : null
-    }
+	return {
+		question: question ? question : null,
+		author: question ? users[question.author] : null
+	};
 }
 
 export default connect(mapStateToProps)(UnansweredQuestion);
