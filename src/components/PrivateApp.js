@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Nav from './Nav';
+import NavigationBar from './NavigationBar';
 import Home from './Home';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
@@ -11,7 +11,7 @@ class PrivateApp extends Component {
 	render() {
 		return (
 			<div>
-				<Nav />
+				<NavigationBar />
 				<Switch>
 					<Route path="/" exact component={Home} />
 					<Route path="/questions/:id" component={QuestionPage} />
