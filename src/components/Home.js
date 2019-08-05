@@ -1,49 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-//import Typography from '@material-ui/core/Typography';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { withStyles } from '@material-ui/core/styles';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import BriefQuestionsList from './BriefQuestionsList';
 
-const styles = (theme) => ({
-	root: {
-		flexGrow: 1
-	}
-});
-
 class Home extends Component {
-	state = {
-		value: 0
-	};
-
-	handleChange = (event, value) => {
-		this.setState({ value });
-	};
-
 	render() {
-		const { answeredQuestionIds, unansweredQuestionIds, classes } = this.props;
-		const { value } = this.state;
+		const { answeredQuestionIds, unansweredQuestionIds } = this.props;
 
 		return (
-			<div className={classes.root}>
-				<Tabs value={value} onChange={this.handleChange}>
-					<Tab label="Unanswered Questions" />
-					<Tab label="Answered Questions" />
+			<Fragment>
+				<Tabs>
+					<Tab eventKey="unanswered" title="Unanswered Questions">
+						<BriefQuestionsList
+							idsList={unansweredQuestionIds}
+							emptyListNote="No more Unswered Questions! Time to create some new ones! "
+						/>
+					</Tab>
+					<Tab eventKey="answered" title="Answered Questions">
+						<BriefQuestionsList
+							idsList={answeredQuestionIds}
+							emptyListNote="No Answered Questions yet! What are you waiting for???"
+						/>
+					</Tab>
 				</Tabs>
-				{value === 0 && (
-					<BriefQuestionsList
-						idsList={unansweredQuestionIds}
-						emptyListNote="No more Unswered Questions! Time to create some new ones! "
-					/>
-				)}
-				{value === 1 && (
-					<BriefQuestionsList
-						idsList={answeredQuestionIds}
-						emptyListNote="No Answered Questions yet! What are you waiting for???"
-					/>
-				)}
-			</div>
+			</Fragment>
 		);
 	}
 }
@@ -63,4 +44,4 @@ function mapStateToProps({ authedUser, questions, users }) {
 	};
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(Home));
+export default connect(mapStateToProps)(Home);
