@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CssBaseline from '@material-ui/core/CssBaseline';
+//import CssBaseline from '@material-ui/core/CssBaseline';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Login from './components/Login';
 import PrivateApp from './components/PrivateApp';
@@ -13,12 +13,11 @@ class App extends Component {
 	}
 
 	render() {
-		const { classes, authedUser, loadingBar } = this.props;
+		const { authedUser, loadingBar } = this.props;
 
 		return (
 			<Router>
 				<Fragment>
-					<CssBaseline />
 					{loadingBar.default === undefined || loadingBar.default === 1 ? (
 						<div style={{ display: 'flex', justifyContent: 'center' }}>
 							<CircularProgress />
