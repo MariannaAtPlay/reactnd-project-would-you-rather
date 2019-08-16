@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 import NavigationBar from './NavigationBar';
 import Home from './Home';
 import NewQuestion from './NewQuestion';
@@ -10,7 +11,7 @@ import PageNotFound from './PageNotFound';
 class PrivateApp extends Component {
 	render() {
 		return (
-			<div>
+			<Container>
 				<NavigationBar />
 				<Switch>
 					<Route path="/" exact component={Home} />
@@ -19,7 +20,7 @@ class PrivateApp extends Component {
 					<Route path="/leaderboard" component={LeaderBoard} />
 					<Route component={PageNotFound} />
 				</Switch>
-			</div>
+			</Container>
 		);
 	}
 }

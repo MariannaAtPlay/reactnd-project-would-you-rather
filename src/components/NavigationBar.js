@@ -4,6 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import { reSetAuthedUser } from '../actions/authedUser';
 
 function NavigationBar(props) {
@@ -15,7 +16,7 @@ function NavigationBar(props) {
 
 	return (
 		<Fragment>
-			<Navbar expand="sm" bg="light" variant="light">
+			<Navbar expand="sm" bg="light" className="my-3 border">
 				<Navbar.Brand as={Link} to="/">
 					Would You Rather... ?
 				</Navbar.Brand>
@@ -34,11 +35,14 @@ function NavigationBar(props) {
 					</Nav>
 					<Nav>
 						<Navbar.Text>{user.name}</Navbar.Text>
-						<Button
-							variant="outline-dark"
-							onClick={handleLogout}
-							className="ml-3"
-						>
+						<Image
+							src={user.avatarURL}
+							roundedCircle
+							width="40"
+							height="40"
+							className="mx-2"
+						/>
+						<Button variant="outline-dark" onClick={handleLogout}>
 							Logout
 						</Button>
 					</Nav>

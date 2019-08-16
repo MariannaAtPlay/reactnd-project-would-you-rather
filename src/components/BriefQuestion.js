@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import { formatDate } from '../utils/helpers';
 
 class BriefQuestion extends Component {
@@ -15,30 +15,35 @@ class BriefQuestion extends Component {
 		const { name, avatarURL } = author;
 
 		return (
-			<Card
-				style={{
-					width: '50%',
-					margin: '1em auto',
-					padding: '1em',
-					display: 'block'
-				}}
-			>
-				<CardContent>
-					<Avatar alt={name} src={avatarURL} />
-					<Typography component="p">
-						{name} asks: Would you rather...
-						<br />
-						{optionOne.text.slice(0, 30)}...
-						<br />
-						{formatDate(timestamp)} <br />
-					</Typography>
-				</CardContent>
-				<CardActions>
-					<Link to={`/questions/${id}`}>
-						<button>View Question</button>
-					</Link>
-				</CardActions>
-			</Card>
+			<Row className="justify-content-center">
+				<Col xs={12} md={6}>
+					<Card bg="light" className="m-3">
+						<Card.Header>
+							<Image
+								src={avatarURL}
+								roundedCircle
+								fluid
+								width="40"
+								height="40"
+								className="mr-2"
+							/>
+							{name} asks:
+						</Card.Header>
+						<Card.Body>
+							<Card.Title className="text-muted">
+								Would you rather...
+							</Card.Title>
+							<Card.Text>{optionOne.text.slice(0, 50)}...?</Card.Text>
+							<Link to={`/questions/${id}`}>
+								<Button variant="outline-dark">View Question</Button>
+							</Link>
+						</Card.Body>
+						<Card.Footer>
+							<small className="text-muted">{formatDate(timestamp)}</small>
+						</Card.Footer>
+					</Card>
+				</Col>
+			</Row>
 		);
 	}
 }
