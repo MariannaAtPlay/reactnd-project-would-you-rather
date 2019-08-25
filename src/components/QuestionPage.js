@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import UnansweredQuestion from './UnansweredQuestion';
 import AnsweredQuestion from './AnsweredQuestion';
@@ -9,11 +9,14 @@ class QuestionPage extends Component {
 		const id = match.params.id;
 		const answered = autherUserAnsweres.hasOwnProperty(id) ? true : false;
 
-		if (answered) {
-			return <AnsweredQuestion id={id} />;
-		} else {
-			return <UnansweredQuestion id={id} />;
-		}
+		return (
+			<Fragment>
+				<h2 className="text-center my-3">
+					<small>Would You Rather...</small>
+				</h2>
+				{answered ? <AnsweredQuestion id={id} /> : <UnansweredQuestion id={id} />}
+			</Fragment>
+		);
 	}
 }
 

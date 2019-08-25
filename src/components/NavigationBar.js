@@ -16,7 +16,7 @@ function NavigationBar(props) {
 
 	return (
 		<Fragment>
-			<Navbar expand="lg" bg="light" className="my-3 border">
+			<Navbar expand="lg" bg="light" variant="light" className="my-3 border">
 				<Navbar.Brand as={Link} to="/">
 					<h2>
 						<small>WYR...?</small>
