@@ -16,9 +16,11 @@ function NavigationBar(props) {
 
 	return (
 		<Fragment>
-			<Navbar expand="sm" bg="light" className="my-3 border">
+			<Navbar expand="lg" bg="light" className="my-3 border">
 				<Navbar.Brand as={Link} to="/">
-					Would You Rather... ?
+					<h2>
+						<small>WYR...?</small>
+					</h2>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
@@ -33,16 +35,20 @@ function NavigationBar(props) {
 							Leaderboard
 						</Nav.Link>
 					</Nav>
-					<Nav>
+					<Nav className="align-items-start">
 						<Navbar.Text>{user.name}</Navbar.Text>
 						<Image
 							src={user.avatarURL}
 							roundedCircle
 							width="40"
 							height="40"
-							className="mx-2"
+							className="mx-3"
 						/>
-						<Button variant="outline-dark" onClick={handleLogout}>
+						<Button
+							variant="outline-dark"
+							onClick={handleLogout}
+							className="mt-3 mt-lg-0"
+						>
 							Logout
 						</Button>
 					</Nav>
