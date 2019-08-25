@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import Typography from '@material-ui/core/Typography';
 import BriefQuestion from './BriefQuestion';
 
 function BriefQuestionsList(props) {
@@ -13,9 +12,7 @@ function BriefQuestionsList(props) {
 			{idsList.length ? (
 				idsList.map((id) => <BriefQuestion key={id} id={id} />)
 			) : (
-				<Typography component="p" align="center">
-					{emptyListNote}
-				</Typography>
+				<p className="text-center">{emptyListNote}</p>
 			)}
 		</Fragment>
 	);
