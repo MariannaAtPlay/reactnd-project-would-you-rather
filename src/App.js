@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import CssBaseline from '@material-ui/core/CssBaseline';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Spinner from 'react-bootstrap/Spinner';
 import Login from './components/Login';
 import PrivateApp from './components/PrivateApp';
 import { handleInitialData } from './actions/shared';
@@ -17,15 +16,20 @@ class App extends Component {
 
 		return (
 			<Router>
-				<Fragment>
+				<div className="text-center">
 					{loadingBar.default === undefined || loadingBar.default === 1 ? (
-						<div style={{ display: 'flex', justifyContent: 'center' }}>
-							<CircularProgress />
-						</div>
+						<Spinner
+							animation="border"
+							role="status"
+							variant="secondary"
+							className="my-5"
+						>
+							<span className="sr-only">Loading...</span>
+						</Spinner>
 					) : (
-						<div>{!authedUser ? <Login /> : <PrivateApp />}</div>
+						<Fragment>{!authedUser ? <Login /> : <PrivateApp />}</Fragment>
 					)}
-				</Fragment>
+				</div>
 			</Router>
 		);
 	}
