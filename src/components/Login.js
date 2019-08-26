@@ -77,7 +77,7 @@ class Login extends Component {
 					<Typography variant="headline">Login</Typography>
 					{errorMsg ? (
 						<p>
-							<span style={{ color: 'red' }}>{errorMsg}</span>
+							<span className="text-danger">{errorMsg}</span>
 							<br />
 						</p>
 					) : null}

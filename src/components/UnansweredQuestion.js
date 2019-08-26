@@ -62,7 +62,7 @@ class UnansweredQuestion extends Component {
 							>
 								{errorMsg ? (
 									<p>
-										<span style={{ color: 'red' }}>{errorMsg}</span>
+										<span className="text-danger">{errorMsg}</span>
 										<br />
 									</p>
 								) : null}
@@ -96,47 +96,6 @@ class UnansweredQuestion extends Component {
 				</Col>
 			</Row>
 		);
-
-		{
-			/*<Card
-				style={{
-					width: '50%',
-					margin: '1em auto',
-					padding: '1em',
-					display: 'block'
-				}}
-			>
-				<form
-					onSubmit={(e) => this.handleSubmit(id, e)}
-					ref={(f) => (this.form = f)}
-				>
-					<CardContent>
-						<Avatar alt={name} src={avatarURL} />
-						<Typography component="div">
-							{name} asks:
-							<p>Would you rather...</p>
-							<br />
-							{errorMsg ? (
-								<p>
-									<span style={{ color: 'red' }}>{errorMsg}</span>
-									<br />
-								</p>
-							) : null}
-							<input type="radio" value="optionOne" name="answer" />{' '}
-							{optionOne.text}
-							<br />
-							<input type="radio" value="optionTwo" name="answer" />{' '}
-							{optionTwo.text}
-							<br />
-							<p>Asked at {formatDate(timestamp)}</p>
-						</Typography>
-					</CardContent>
-					<CardActions>
-						<button type="submit">Vote</button>
-					</CardActions>
-				</form>
-			</Card>*/
-		}
 	}
 }
 

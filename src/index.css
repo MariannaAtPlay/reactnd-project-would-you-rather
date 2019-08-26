@@ -1,0 +1,8 @@
+a {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+ul {
+	list-style-type: circle;
+	padding-inline-start: 0rem;
+}

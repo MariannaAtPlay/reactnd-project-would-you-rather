@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Avatar from '@material-ui/core/Avatar';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import { formatDate } from '../utils/helpers';
 import PageNotFound from './PageNotFound';
 
@@ -18,55 +19,69 @@ class AnsweredQuestion extends Component {
 		const { optionOne, optionTwo, timestamp } = question;
 		const { name, avatarURL } = author;
 		const totalVotes = optionOne.votes.length + optionTwo.votes.length;
+		const optionOnePercent = Math.round((optionOne.votes.length / totalVotes) * 100);
+		const optionTwoPercent = Math.round((optionTwo.votes.length / totalVotes) * 100);
 
 		return (
-			<Card
-				style={{
-					width: '50%',
-					margin: '1em auto',
-					padding: '1em',
-					display: 'block'
-				}}
-			>
-				<CardContent>
-					<Avatar alt={name} src={avatarURL} />
-					<Typography component="div">
-						{name} asks: Would you rather...
-						<br />
-						<ul>
-							<li>
-								{optionOne.text}
-								{optionOne.votes.includes(authedUser) ? (
-									<span style={{ color: 'red' }}>
-										{' '}
-										&lt;- Your choice
-									</span>
-								) : null}
-							</li>
-							chosen by {optionOne.votes.length} out of {totalVotes} users{' '}
-							<br />
-							which is{' '}
-							{Math.round(
-								(optionOne.votes.length / totalVotes) * 100
-							)}% <br />
-							<li>
-								{optionTwo.text}
-								{optionTwo.votes.includes(authedUser) ? (
-									<span style={{ color: 'red' }}>
-										{' '}
-										&lt;- Your choice
-									</span>
-								) : null}
-							</li>
-							chosen by {optionTwo.votes.length} out of {totalVotes} users{' '}
-							<br />
-							which is{' '}
-							{Math.round((optionTwo.votes.length / totalVotes) * 100)}%
-						</ul>
-						Asked at {formatDate(timestamp)}
-					</Typography>
-				</CardContent>
-			</Card>
+			<Row className="justify-content-center">
+				<Col xs={12} md={6}>
+					<Card bg="light" className="m-3">
+						<Card.Header>
+							<Image
+								src={avatarURL}
+								roundedCircle
+								fluid
+								width="40"
+								height="40"
+								className="mr-2"
+							/>
+							{name} asks:
+						</Card.Header>
+
+						<Card.Body className="d-flex justify-content-center">
+							<ul>
+								<li>
+									{optionOne.text}
+									{optionOne.votes.includes(authedUser) ? (
+										<span className="text-danger ml-2">
+											&lt;- Your choice
+										</span>
+									) : null}
+								</li>
+								<ProgressBar
+									now={optionOnePercent}
+									label={`${optionOnePercent}%`}
+									variant="info"
+								/>
+								<Card.Text className="text-muted">
+									chosen by {optionOne.votes.length} out of {totalVotes}{' '}
+									users
+								</Card.Text>
+								<li>
+									{optionTwo.text}
+									{optionTwo.votes.includes(authedUser) ? (
+										<span className="text-danger ml-2">
+											&lt;- Your choice
+										</span>
+									) : null}
+								</li>
+								<ProgressBar
+									now={optionTwoPercent}
+									label={`${optionTwoPercent}%`}
+									variant="info"
+								/>
+								<Card.Text className="text-muted">
+									chosen by {optionTwo.votes.length} out of {totalVotes}{' '}
+									users
+								</Card.Text>
+							</ul>
+						</Card.Body>
+						<Card.Footer>
+							<small className="text-muted">{formatDate(timestamp)}</small>
+						</Card.Footer>
+					</Card>
+				</Col>
+			</Row>
 		);
 	}
 }
