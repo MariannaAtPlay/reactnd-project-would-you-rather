@@ -16,8 +16,8 @@ class App extends Component {
 
 		return (
 			<Router>
-				<div className="text-center">
-					{loadingBar.default === undefined || loadingBar.default === 1 ? (
+				{loadingBar.default === undefined || loadingBar.default === 1 ? (
+					<div className="d-flex justify-content-center">
 						<Spinner
 							animation="border"
 							role="status"
@@ -26,10 +26,10 @@ class App extends Component {
 						>
 							<span className="sr-only">Loading...</span>
 						</Spinner>
-					) : (
-						<Fragment>{!authedUser ? <Login /> : <PrivateApp />}</Fragment>
-					)}
-				</div>
+					</div>
+				) : (
+					<Fragment>{!authedUser ? <Login /> : <PrivateApp />}</Fragment>
+				)}
 			</Router>
 		);
 	}
