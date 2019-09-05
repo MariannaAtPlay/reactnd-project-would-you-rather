@@ -35,14 +35,16 @@ class Login extends Component {
 					<Card bg="light" className="text-center">
 						<Card.Header>Login</Card.Header>
 						<Card.Body>
-							{errorMsg ? <p className="text-danger">{errorMsg}</p> : null}
 							<Form onSubmit={this.handleSubmit}>
 								<Form.Group controlId="formGridState">
 									<Form.Label>Username</Form.Label>
+									{errorMsg ? (
+										<p className="text-danger">{errorMsg}</p>
+									) : null}
+
 									<Form.Control
 										as="select"
 										ref={(id) => (this.userID = id)}
-										className="text-center"
 									>
 										<option value="">Select user</option>
 										{userNames.map((item) => (
