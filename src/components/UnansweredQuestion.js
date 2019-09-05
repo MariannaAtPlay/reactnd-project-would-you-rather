@@ -61,10 +61,7 @@ class UnansweredQuestion extends Component {
 								ref={(f) => (this.form = f)}
 							>
 								{errorMsg ? (
-									<p>
-										<span className="text-danger">{errorMsg}</span>
-										<br />
-									</p>
+									<p className="text-danger">{errorMsg}</p>
 								) : null}
 								<Form.Check
 									custom
