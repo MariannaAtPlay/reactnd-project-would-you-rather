@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Avatar from '@material-ui/core/Avatar';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-//import { withs } from '@material-ui/core/styles';
-import { withTheme } from '@material-ui/core/styles';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 
 class UserStats extends Component {
 	render() {
@@ -13,25 +11,34 @@ class UserStats extends Component {
 		const { name, avatarURL, answers, questions } = user;
 
 		return (
-			//TODO: move the styles to the theme
-			<Card
-				style={{
-					width: '50%',
-					margin: '1em auto',
-					padding: '1em',
-					display: 'block'
-				}}
-			>
-				<CardContent>
-					<Avatar alt={name} src={avatarURL} />
-					<Typography component="p">
-						{name} <br />
-						Answered Questions: {Object.keys(answers).length} <br />
-						Created Questions: {questions.length} <br />
-						Score: {Object.keys(answers).length + questions.length}
-					</Typography>
-				</CardContent>
-			</Card>
+			<Row className="justify-content-center">
+				<Col xs={12} md={6}>
+					<Card bg="light" className="m-3">
+						<Card.Header>
+							<Image
+								src={avatarURL}
+								roundedCircle
+								fluid
+								width="40"
+								height="40"
+								className="mr-2"
+								alt={name}
+							/>
+							{name}
+						</Card.Header>
+						<Card.Body className="d-flex justify-content-center">
+							<Card.Text>
+								Answered Questions: {Object.keys(answers).length}
+								<br />
+								Created Questions: {questions.length}
+							</Card.Text>
+						</Card.Body>
+						<Card.Footer>
+							Score: {Object.keys(answers).length + questions.length}
+						</Card.Footer>
+					</Card>
+				</Col>
+			</Row>
 		);
 	}
 }
@@ -42,4 +49,4 @@ function mapStateToProps({ users }, { id }) {
 	};
 }
 
-export default connect(mapStateToProps)(withTheme()(UserStats));
+export default connect(mapStateToProps)(UserStats);

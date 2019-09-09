@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Typography from '@material-ui/core/Typography';
 import UserStats from './UserStats';
 
 class LeaderBoard extends Component {
 	render() {
 		return (
 			<div>
-				<Typography variant="headline" component="h2" align="center">
-					LeaderBoard
-				</Typography>
+				<h2 className="text-center my-3">
+					<small>LeaderBoard</small>
+				</h2>
 				{this.props.userIDs.map((id) => (
 					<UserStats key={id} id={id} />
 				))}
