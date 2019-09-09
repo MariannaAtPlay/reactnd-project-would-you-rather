@@ -9,6 +9,7 @@ import Image from 'react-bootstrap/Image';
 import { handleAddAnswer } from '../actions/questions';
 import { formatDate } from '../utils/helpers';
 import PageNotFound from './PageNotFound';
+import Avatar from './Avatar';
 
 class UnansweredQuestion extends Component {
 	state = {
@@ -44,14 +45,7 @@ class UnansweredQuestion extends Component {
 				<Col xs={12} md={6}>
 					<Card bg="light" className="m-3">
 						<Card.Header>
-							<Image
-								src={avatarURL}
-								roundedCircle
-								fluid
-								width="40"
-								height="40"
-								className="mr-2"
-							/>
+							<Avatar avatarURL={avatarURL} className="mr-2" />
 							{name} asks:
 						</Card.Header>
 

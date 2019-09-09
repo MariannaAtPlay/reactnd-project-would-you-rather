@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { formatDate } from '../utils/helpers';
 import PageNotFound from './PageNotFound';
+import Avatar from './Avatar';
 
 class AnsweredQuestion extends Component {
 	render() {
@@ -27,14 +27,7 @@ class AnsweredQuestion extends Component {
 				<Col xs={12} md={6}>
 					<Card bg="light" className="m-3">
 						<Card.Header>
-							<Image
-								src={avatarURL}
-								roundedCircle
-								fluid
-								width="40"
-								height="40"
-								className="mr-2"
-							/>
+							<Avatar avatarURL={avatarURL} className="mr-2" />
 							{name} asks:
 						</Card.Header>
 

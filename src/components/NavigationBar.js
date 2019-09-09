@@ -4,8 +4,8 @@ import { NavLink, Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
 import { reSetAuthedUser } from '../actions/authedUser';
+import Avatar from './Avatar';
 
 function NavigationBar(props) {
 	const { user, dispatch } = props;
@@ -37,13 +37,7 @@ function NavigationBar(props) {
 					</Nav>
 					<Nav className="align-items-start">
 						<Navbar.Text>{user.name}</Navbar.Text>
-						<Image
-							src={user.avatarURL}
-							roundedCircle
-							width="40"
-							height="40"
-							className="mx-3"
-						/>
+						<Avatar avatarURL={user.avatarURL} className="mx-3" />
 						<Button
 							variant="outline-dark"
 							onClick={handleLogout}

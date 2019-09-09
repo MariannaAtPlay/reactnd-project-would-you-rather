@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
+import Avatar from './Avatar';
 
 class UserStats extends Component {
 	render() {
@@ -15,15 +15,7 @@ class UserStats extends Component {
 				<Col xs={12} md={6}>
 					<Card bg="light" className="m-3">
 						<Card.Header>
-							<Image
-								src={avatarURL}
-								roundedCircle
-								fluid
-								width="40"
-								height="40"
-								className="mr-2"
-								alt={name}
-							/>
+							<Avatar avatarURL={avatarURL} className="mr-2" />
 							{name}
 						</Card.Header>
 						<Card.Body className="d-flex justify-content-center">
