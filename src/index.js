@@ -4,7 +4,6 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import 'typeface-roboto';
 import App from './App';
 import rootReducer from './reducers';
 import 'bootstrap/dist/css/bootstrap.min.css';

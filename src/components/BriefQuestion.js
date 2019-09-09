@@ -5,7 +5,6 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
 import { formatDate } from '../utils/helpers';
 import Avatar from './Avatar';
 
