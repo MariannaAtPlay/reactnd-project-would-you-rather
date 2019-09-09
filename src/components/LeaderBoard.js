@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import UserStats from './UserStats';
 
 class LeaderBoard extends Component {
 	render() {
 		return (
-			<div>
+			<Fragment>
 				<h2 className="text-center my-3">
 					<small>LeaderBoard</small>
 				</h2>
 				{this.props.userIDs.map((id) => (
 					<UserStats key={id} id={id} />
 				))}
-			</div>
+			</Fragment>
 		);
 	}
 }

@@ -15,13 +15,15 @@ class PrivateApp extends Component {
 			<Router>
 				<Container>
 					<NavigationBar />
-					<Switch>
-						<Route path="/" exact component={Home} />
-						<Route path="/questions/:id" component={QuestionPage} />
-						<Route path="/add" component={NewQuestion} />
-						<Route path="/leaderboard" component={LeaderBoard} />
-						<Route component={PageNotFound} />
-					</Switch>
+					<main>
+						<Switch>
+							<Route path="/" exact component={Home} />
+							<Route path="/questions/:id" component={QuestionPage} />
+							<Route path="/add" component={NewQuestion} />
+							<Route path="/leaderboard" component={LeaderBoard} />
+							<Route component={PageNotFound} />
+						</Switch>
+					</main>
 				</Container>
 			</Router>
 		);
