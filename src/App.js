@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from 'react-bootstrap/Spinner';
 import Login from './components/Login';
@@ -14,24 +13,23 @@ class App extends Component {
 	render() {
 		const { authedUser, loadingBar } = this.props;
 
-		return (
-			<Router>
-				{loadingBar.default === undefined || loadingBar.default === 1 ? (
-					<div className="d-flex justify-content-center">
-						<Spinner
-							animation="border"
-							role="status"
-							variant="secondary"
-							className="my-5"
-						>
-							<span className="sr-only">Loading...</span>
-						</Spinner>
-					</div>
-				) : (
-					<Fragment>{!authedUser ? <Login /> : <PrivateApp />}</Fragment>
-				)}
-			</Router>
-		);
+		if (loadingBar.default === undefined || loadingBar.default === 1) {
+			//loading
+			return (
+				<div className="d-flex justify-content-center">
+					<Spinner
+						animation="border"
+						role="status"
+						variant="secondary"
+						className="my-5"
+					>
+						<span className="sr-only">Loading...</span>
+					</Spinner>
+				</div>
+			);
+		} else {
+			return <Fragment>{!authedUser ? <Login /> : <PrivateApp />}</Fragment>;
+		}
 	}
 }
 
