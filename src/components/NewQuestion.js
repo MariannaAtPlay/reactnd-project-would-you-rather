@@ -51,7 +51,7 @@ class NewQuestion extends Component {
 				</h2>
 				<Row className="justify-content-center">
 					<Col xs={12} md={6}>
-						<Card bg="light" className="m-3">
+						<Card bg="light" className="m-3 text-center">
 							<Card.Body>
 								<Form onSubmit={this.handleSubmit}>
 									<Form.Group controlId="optionOne">
