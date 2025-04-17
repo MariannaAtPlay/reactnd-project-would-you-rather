@@ -23,7 +23,7 @@ class BriefQuestion extends Component {
 							{name} asks:
 						</Card.Header>
 						<Card.Body className="text-center">
-							<Card.Text>{optionOne.text.slice(0, 50)}...?</Card.Text>
+							<Card.Text>{optionOne.text.slice(0, 50)} or...?</Card.Text>
 							<Link to={`/questions/${id}`}>
 								<Button variant="outline-dark">View Question</Button>
 							</Link>
