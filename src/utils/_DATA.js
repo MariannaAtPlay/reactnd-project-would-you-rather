@@ -79,11 +79,11 @@ let questions = {
 		author: 'davidhh',
 		timestamp: 1744857600000,
 		optionOne: {
-			votes: [],
+			votes: ['davidhh'],
 			text: 'go for independence'
 		},
 		optionTwo: {
-			votes: ['davidhh', 'sarahedo'],
+			votes: ['sarahedo'],
 			text: 'play it safe'
 		}
 	},
@@ -118,11 +118,11 @@ let questions = {
 		author: 'davidhh',
 		timestamp: 1744857600000,
 		optionOne: {
-			votes: ['davidhh'],
+			votes: [],
 			text: 'put off, push away, or otherwise delay'
 		},
 		optionTwo: {
-			votes: ['sarahedo'],
+			votes: ['sarahedo', 'davidhh'],
 			text: 'take imperfect action now'
 		}
 	},
