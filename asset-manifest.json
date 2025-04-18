@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reactnd-project-would-you-rather/static/css/main.0e0700d4.css",
+    "main.js": "/reactnd-project-would-you-rather/static/js/main.adac7ade.js",
+    "index.html": "/reactnd-project-would-you-rather/index.html",
+    "main.0e0700d4.css.map": "/reactnd-project-would-you-rather/static/css/main.0e0700d4.css.map",
+    "main.adac7ade.js.map": "/reactnd-project-would-you-rather/static/js/main.adac7ade.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e0700d4.css",
+    "static/js/main.adac7ade.js"
+  ]
+}
