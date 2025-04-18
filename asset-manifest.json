@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "https://mariannaatplay.github.io/reactnd-project-would-you-rather/static/css/main.0e0700d4.css",
-    "main.js": "https://mariannaatplay.github.io/reactnd-project-would-you-rather/static/js/main.6cf21c96.js",
+    "main.js": "https://mariannaatplay.github.io/reactnd-project-would-you-rather/static/js/main.7d706819.js",
     "index.html": "https://mariannaatplay.github.io/reactnd-project-would-you-rather/index.html",
     "main.0e0700d4.css.map": "https://mariannaatplay.github.io/reactnd-project-would-you-rather/static/css/main.0e0700d4.css.map",
-    "main.6cf21c96.js.map": "https://mariannaatplay.github.io/reactnd-project-would-you-rather/static/js/main.6cf21c96.js.map"
+    "main.7d706819.js.map": "https://mariannaatplay.github.io/reactnd-project-would-you-rather/static/js/main.7d706819.js.map"
   },
   "entrypoints": [
     "static/css/main.0e0700d4.css",
-    "static/js/main.6cf21c96.js"
+    "static/js/main.7d706819.js"
   ]
 }
