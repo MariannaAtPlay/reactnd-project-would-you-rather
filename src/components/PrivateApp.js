@@ -12,7 +12,7 @@ import PageNotFound from './PageNotFound';
 class PrivateApp extends Component {
 	render() {
 		return (
-			<Router>
+			<Router basename={process.env.PUBLIC_URL}>
 				<Container>
 					<NavigationBar />
 					<main>
